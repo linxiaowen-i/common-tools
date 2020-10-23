@@ -22,9 +22,6 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      - name: 构建
-        run: npm run build
-
       - name: 导航到构建输出目录
         run: 
           git init
