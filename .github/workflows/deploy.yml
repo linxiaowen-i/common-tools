@@ -33,8 +33,6 @@ jobs:
         run: git init
       - name: 添加stages
         run: git add .
-      - name: 提交
-        run: git commit -m 'deploy'
       
       - name: 推到 gh-pages 分支
         run: 
