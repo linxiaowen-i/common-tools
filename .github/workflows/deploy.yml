@@ -24,9 +24,13 @@ jobs:
 
       - name: 导航到构建输出目录
         run: 
-          git init
-          git add -A
-          git commit -m 'deploy'
+          cd docs/.vuepress/dist
+      - name: 初始化init
+        run: git init
+      - name: 添加stages
+        run: git add .
+      - name: 提交
+        run: git commit -m 'deploy'
       
       - name: 推到 gh-pages 分支
         run: 
