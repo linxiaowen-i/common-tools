@@ -1,0 +1,23 @@
+{
+  "name": "common-tools",
+  "version": "1.0.0",
+  "description": "linxiaowen's common tools",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linxiaowen-i/common-tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linxiaowen-i/common-tools/issues"
+  },
+  "homepage": "https://github.com/linxiaowen-i/common-tools#readme",
+  "dependencies": {
+    "vuepress": "^1.7.1"
+  }
+}
