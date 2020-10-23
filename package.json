@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "push": "git push -f git@github.com:linxiaowen-i/common-tools.git master:gh-pages"
+    "build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
