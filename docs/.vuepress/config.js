@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = (options, context) => ({
+  base: '/common-tools/',
   dest: 'dist',
   title: '林晓文的备忘录',
   description: 'linxiaowen Doc',
