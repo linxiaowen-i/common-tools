@@ -7,7 +7,8 @@
     "serve": "vuepress dev docs",
     "build": "vuepress build docs",
     "deploy": "deploy.sh",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "push": "git push -f git@github.com:linxiaowen-i/common-tools.git"
   },
   "repository": {
     "type": "git",
