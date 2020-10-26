@@ -6,8 +6,7 @@ module.exports = (options, context) => ({
   title: '林晓文的备忘录',
   description: 'linxiaowen Doc',
   chainWebpack(config) {
-    config.resolve.alias.set('@public', path.resolve(__dirname, './public')),
-      config.resolve.alias.set('@docs', path.resolve(__dirname, '../'))
+    config.resolve.alias.set('@public', path.resolve(__dirname, './public'))
   },
   theme: 'reco',
   themeConfig: {
@@ -16,8 +15,23 @@ module.exports = (options, context) => ({
     docsDir: 'docs',
     nav: [
       { text: '首页', link: '/' },
-      { text: '代码片段', link: '/pieces/' },
-      { text: '关于', link: '/about/' }
+      { text: '代码片段', link: '/pieces/file/' },
+      { text: '播放器', link: '/player/' },
+      { text: '常用配置', link: '/my-setting/' }
     ],
+    sidebar: {
+      '/pieces/': [
+        {
+          title: '文件操作',
+          children: ['file']
+        }
+      ],
+      '/player/': [
+        {
+          title: '播放器',
+          children: ['DPlayer']
+        }
+      ]
+    }
   }
 })
