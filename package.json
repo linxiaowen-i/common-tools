@@ -6,11 +6,17 @@
   "scripts": {
     "serve": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "deploy.sh"
+    "deploy": "deploy.sh",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/linxiaowen-i/common-tools.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +25,7 @@
   },
   "homepage": "https://github.com/linxiaowen-i/common-tools#readme",
   "dependencies": {
+    "commitizen": "^4.2.2",
     "vuepress": "^1.7.1",
     "vuepress-theme-reco": "^1.5.7"
   }
