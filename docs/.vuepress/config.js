@@ -26,12 +26,16 @@ module.exports = (options, context) => ({
           children: ['file']
         }
       ],
-      '/player/': [
-        {
-          title: '播放器',
-          children: ['DPlayer']
-        }
-      ]
+      '/player/': [{
+        title: '播放器',
+        children: [{
+          title: 'DPlayer',
+          children: ['']
+        }, {
+          title: 'FFmpeg',
+          children: ['FFmpeg/start']
+        }]
+      }]
     }
   }
 })

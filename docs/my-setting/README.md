@@ -10,8 +10,9 @@
    ![vscode-bg1](@public/my-setting/vscode-bg1.png)
 
 1. 改个样式文件，打开 vscode 安装目录下的这个文件
+
    > 因为 vscode 版本更新，对应的 css 文件路径可能有调整，自己意会找一下就行
-   
+
    ![vscode-bg2](@public/my-setting/vscode-bg2.png)
 
 1. 在这个样式文件后面加一段 css
@@ -33,3 +34,22 @@ body {
 ```
 
 css 可以根据自己用的图片情况调整透明度，图片 url（在线 or 本地 uri 都 ok） 等。
+
+
+## 常用主题
+![vscode-bg3](@public/my-setting/vscode-bg3.jpg)
+
+> 切换主题快捷键：`ctrl+K ctrl+T`
+
+![主题列表](@public/my-setting/theme-list.png)
+
+## vscode 插件
+
+- `GitLens` 查看历史提交，找到凶手
+- `Todo Tree`
+- `prettier` 代码格式化工具
+
+## markdown预览快捷键
+
+不需要装插件，直接 `ctrl+shift+v`
+
