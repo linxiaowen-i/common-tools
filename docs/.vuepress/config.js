@@ -17,7 +17,7 @@ module.exports = (options, context) => ({
       { text: '首页', link: '/' },
       { text: '代码片段', link: '/pieces/file/' },
       { text: '播放器', link: '/player/' },
-      { text: '常用配置', link: '/my-setting/' }
+      { text: '常用配置', link: '/my-setting/vscode' }
     ],
     sidebar: {
       '/pieces/': [
@@ -28,6 +28,7 @@ module.exports = (options, context) => ({
       ],
       '/player/': [{
         title: '播放器',
+        collapsable: false,
         children: [{
           title: 'DPlayer',
           children: ['']
@@ -35,7 +36,13 @@ module.exports = (options, context) => ({
           title: 'FFmpeg',
           children: ['FFmpeg/start']
         }]
-      }]
+      }],
+      '/my-setting/': [
+        {
+          title: '个人常用',
+          children: ['vscode', 'npm']
+        }
+      ]
     }
   }
 })
