@@ -29,14 +29,14 @@ module.exports = (options, context) => ({
       '/player/': [{
         title: '播放器',
         collapsable: false,
-        children: [{
-          title: 'DPlayer',
-          children: ['']
-        }, {
-          title: 'FFmpeg',
-          children: ['FFmpeg/start']
-        }]
+        children: ['DPlayer', 'FFmpeg']
       }],
+      '/pieces/': [
+        {
+          title: '代码片段',
+          children: ['file', 'IE11', 'date']
+        }
+      ],
       '/my-setting/': [
         {
           title: '个人常用',
