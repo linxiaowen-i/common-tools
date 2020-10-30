@@ -37,7 +37,6 @@ css 可以根据自己用的图片情况调整透明度，图片 url（在线 or
 
 
 ## 常用主题
-![vscode-bg3](@public/my-setting/vscode-bg3.jpg)
 
 > 切换主题快捷键：`ctrl+K ctrl+T`
 

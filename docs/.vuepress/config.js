@@ -16,14 +16,14 @@ module.exports = (options, context) => ({
     nav: [
       { text: '首页', link: '/' },
       { text: '代码片段', link: '/pieces/file/' },
-      { text: '播放器', link: '/player/' },
-      { text: '常用配置', link: '/my-setting/vscode' }
+      { text: '播放器', link: '/player/DPlayer/' },
+      { text: '常用配置', link: '/my-setting/vscode/' }
     ],
     sidebar: {
       '/pieces/': [
         {
-          title: '文件操作',
-          children: ['file']
+          title: '代码片段',
+          children: ['file', 'IE11', 'date', 'clipboard']
         }
       ],
       '/player/': [{
@@ -31,15 +31,9 @@ module.exports = (options, context) => ({
         collapsable: false,
         children: ['DPlayer', 'FFmpeg']
       }],
-      '/pieces/': [
-        {
-          title: '代码片段',
-          children: ['file', 'IE11', 'date']
-        }
-      ],
       '/my-setting/': [
         {
-          title: '个人常用',
+          title: '常用配置',
           children: ['vscode', 'npm']
         }
       ]
