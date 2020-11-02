@@ -52,7 +52,7 @@ css 可以根据自己用的图片情况调整透明度，图片 url（在线 or
 - `Bracket Pair Colorizer` 括号高亮区分，再也不眼花
 - `indent-rainbow` 缩进不同颜色区分，再也不眼花
 - `vscode-icons` 主题图标，花里胡哨
-- `auto comment blocks` 自动插入注释行
+- `koroFileHeader` 用于在文档头部，函数头部自动生成注释。（`ctrl+alt+i`在文档头部生成，`ctrl+alt+t`在函数头部生成）
 
 
 
