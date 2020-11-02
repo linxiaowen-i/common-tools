@@ -17,8 +17,10 @@ module.exports = (options, context) => ({
       { text: '首页', link: '/' },
       { text: '代码片段', link: '/pieces/file/' },
       { text: '播放器', link: '/player/DPlayer/' },
-      { text: '常用配置', link: '/my-setting/vscode/' }
+      { text: '常用配置', link: '/my-setting/vscode/' },
+      { text: 'webpack配置', link: '/webpack/' }
     ],
+    sidebarDepth: 3,
     sidebar: {
       '/pieces/': [
         {

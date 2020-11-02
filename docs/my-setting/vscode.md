@@ -44,9 +44,17 @@ css 可以根据自己用的图片情况调整透明度，图片 url（在线 or
 
 ## vscode 插件
 
+- `Chinese (Simplified) Language Pack for Visual Studio Code` 中文包，英语渣必备
 - `GitLens` 查看历史提交，找到凶手
-- `Todo Tree`
+- `Git Graph` 图形化查看历史提交
+- `Todo Tree` 
 - `prettier` 代码格式化工具
+- `Bracket Pair Colorizer` 括号高亮区分，再也不眼花
+- `indent-rainbow` 缩进不同颜色区分，再也不眼花
+- `vscode-icons` 主题图标，花里胡哨
+- `auto comment blocks` 自动插入注释行
+
+
 
 ## markdown预览快捷键
 
