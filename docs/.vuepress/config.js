@@ -1,3 +1,11 @@
+/*
+ * @Author: linxiaowen-i
+ * @Date: 2020-10-23 14:45:00
+ * @LastEditTime: 2020-11-03 14:31:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \common-tools\docs\.vuepress\config.js
+ */
 const path = require('path')
 
 module.exports = (options, context) => ({
@@ -18,7 +26,7 @@ module.exports = (options, context) => ({
       { text: '代码片段', link: '/pieces/file/' },
       { text: '播放器', link: '/player/DPlayer/' },
       { text: '常用配置', link: '/my-setting/vscode/' },
-      { text: 'webpack配置', link: '/webpack/' }
+      { text: 'webpack配置', link: '/webpack/vuecli-pack/' }
     ],
     sidebarDepth: 3,
     sidebar: {
@@ -37,6 +45,12 @@ module.exports = (options, context) => ({
         {
           title: '常用配置',
           children: ['vscode', 'npm']
+        }
+      ],
+      '/webpack/': [
+        {
+          title: '常用配置',
+          children: ['vuecli-pack', 'pack-diff']
         }
       ]
     }
