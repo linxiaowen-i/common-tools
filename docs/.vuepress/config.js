@@ -1,11 +1,3 @@
-/*
- * @Author: linxiaowen-i
- * @Date: 2020-10-23 14:45:00
- * @LastEditTime: 2020-11-03 14:31:12
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \common-tools\docs\.vuepress\config.js
- */
 const path = require('path')
 
 module.exports = (options, context) => ({
@@ -49,7 +41,7 @@ module.exports = (options, context) => ({
       ],
       '/webpack/': [
         {
-          title: '常用配置',
+          title: 'webpack配置',
           children: ['vuecli-pack', 'pack-diff']
         }
       ]

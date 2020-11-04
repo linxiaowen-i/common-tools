@@ -1,12 +1,3 @@
-<!--
- * @Author: linxiaowen-i
- * @Date: 2020-11-03 14:29:56
- * @LastEditTime: 2020-11-03 15:15:00
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \common-tools\docs\webpack\pack-diff.md
--->
-
 #  configureWebpack 和 chainWebpack 的区别
 
 两者作用相同，唯一的区别是修改webpack配置的方式不同：

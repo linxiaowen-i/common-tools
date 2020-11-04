@@ -1,13 +1,4 @@
-<!--
- * @Author: your name
- * @Date: 2020-11-02 11:20:40
- * @LastEditTime: 2020-11-03 18:00:42
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \common-tools\docs\webpack\vuecli-pack.md
--->
-
-# webpack 配置
+# webpack 优化配置
 
 ## 量化分析
 
@@ -26,7 +17,7 @@ const smp = new SpeedMeasurePlugin();
 // 在configureWebpack中配置，configureWebpack有两种写法
 
 // 1、配置为一个函数，返回一个将会被合并的对象。用smp.wrap包裹这个函数。
-// ps: 也可以直接修改config配置，但是暂时没找到用smp.wrap包括的方法。
+// ps: 也可以直接修改config配置，但是暂时没找到用smp.wrap包裹的方法。
 configureWebpack: smp.wrap((config) => {
   const plugins = [];
   // 缓存插件
@@ -41,9 +32,7 @@ configureWebpack: smp.wrap((config) => {
 
 // 2、直接提供一个对象，网上大多数是这种写法，但是不方便根据环境配置插件。同样用smp.wrap包裹这个对象
 configureWebpack: smp.wrap({
-  plugins: [
-    new HardSourceWebpackPlugin()
-  ]
+  plugins: [new HardSourceWebpackPlugin()],
 });
 ```
 
@@ -98,13 +87,69 @@ if (process.env.IS_ANALYZ) {
 
 首次构建时间没有太大变化，但是第二次开始，构建时间大约可以节约 80%。
 
+```typescript
+// 引入
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// 在 configureWebpack 中配置
+plugins.push(new HardSourceWebpackPlugin());
+```
+
 ## DllPlugin
 
 如果所有的 js 文件都打成一个 js 文件，会导致最终生成的 js 文件很大，所以要拆分 bundles。
 
 `DllPlugin` 和 `DLLReferencePlugin` 可以实现拆分 bundles，并且可以大大提升构建速度，`DllPlugin` 和 `DLLReferencePlugin` 都是 webpack 的内置模块。
 
-使用`DllPlugin`讲不会频繁更新的库进行编译。
+使用`DllPlugin`将不会频繁更新的库进行编译。
+
+## 针对具体文件的优化
+
+### 静态资源拷贝
+
+使用的插件是`copy-webpack-plugin`
+vue-cli 3.x 已默认集成该插件，可以在 configureWebpack 中的 plugins 配置修改其默认路径、以及要忽略的文件。
+
+```typescript
+plugins: [
+  new CopyWebpackPlugin(
+    [
+      {
+        from: path.resolve(__dirname, "../static"),
+        to: path.resolve(__dirname, "dist"),
+        // 为true表示会删除路径，只复制文件过去
+        flatten: true,
+      },
+    ],
+    {
+      // 要忽略的文件
+      ignore: ["other.js"],
+    }
+  ),
+];
+```
+
+### css 文件处理
+
+css 文件处理主要分几个部分：
+
+1. css 文件编译（包括预处理器编译）
+1. 兼容性处理
+1. css 文件的抽离和压缩
+
+vue-cli 3.x 的配置比较简单，官方文档说已经默认支持 PostCSS、CSS Modules 和包含 Sass、Less、Stylus 在内的预处理器。我们只需要设置开启即可使用：
+
+```typescript
+css: {
+  // 是否开启 css 预处理文件（不开启的话，预处理器的样式不能生效）
+  requireModuleExtension: true,
+  // 使用 css 分离
+  extract: true,
+  // 是否开启 css source-map
+  sourceMap: false,
+  // 向 CSS 相关的 loader 传递选项
+  loaderOptions: {}
+}
+```
 
 ## 参考
 
@@ -112,4 +157,3 @@ if (process.env.IS_ANALYZ) {
 - [Vue-cli 中 Webpack 配置优化（一）](https://www.cnblogs.com/zhurong/p/12603887.html)
 - [Vue-cli 中 Webpack 配置优化（二）](https://www.cnblogs.com/zhurong/p/12611360.html)
 - [带你深度解锁 Webpack 系列(优化篇)](https://mp.weixin.qq.com/s/Rv1O4oFvj6rVpijUXtfyCA)
--
