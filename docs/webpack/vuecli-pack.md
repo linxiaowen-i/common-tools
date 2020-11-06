@@ -7,7 +7,13 @@
 
 ### `speed-measure-webpack-plugin`
 
-用于测量各个插件和 loader 所花费的时间
+用于测量各个插件和 loader 所花费的时间，先安装：
+
+```shell
+npm i speed-measure-webpack-plugin --save-dev
+```
+
+在项目中配置：
 
 ```typescript
 // 引入
@@ -87,11 +93,122 @@ if (process.env.IS_ANALYZ) {
 
 首次构建时间没有太大变化，但是第二次开始，构建时间大约可以节约 80%。
 
+先安装
+
+```shell
+npm i hard-source-webpack-plugin --save-dev
+```
+
+在项目中配置
+
 ```typescript
 // 引入
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 // 在 configureWebpack 中配置
 plugins.push(new HardSourceWebpackPlugin());
+```
+
+## 增量更新
+
+主要是关于 splitChunks 的配置
+
+### hash 配置
+
+js 文件配置 chunkhash（仅生产环境），css 文件配置 contenthash。
+
+```typescript
+
+// js 模块打包，注意区分生产环境
+configureWebpack: config=>{
+  config.output.filename = IS_PROD
+    ? "xxx/js/[name].[chunkhash:8].js"
+    : "xxx/js/[name].[hash:8].js";
+  config.output.chunkFilename = IS_PROD
+    ? "xxx/js/[name].[chunkhash:8].js"
+    : "xxx/js/[name].[hash:8].js";
+}
+
+
+// css模块打包
+const CSS_EXTRACT = {
+  filename: 'networkTeaching/css/[name].[contenthash:8].css',
+  chunkFilename: 'networkTeaching/css/[name].[contenthash:8].css'
+};
+css: {
+  // 开启 CSS source maps?
+  extract: IS_PROD ? CSS_EXTRACT : false,
+  sourceMap: false,
+  // 启用 CSS modules for all css / pre-processor files.
+  requireModuleExtension: true
+}
+```
+
+### 拆分映射文件
+
+根据具体项目的需求，比如将移动端和 PC 端的页面拆开打包，讲某个功能模块用户不经常使用的，用路由懒加载拆开。将太大的依赖包单独打包等。
+
+```typescript
+// 拆包配置
+configureWebpack: (config) => {
+  if (IS_PROD) {
+    const optimization = {
+      splitChunks: {
+        maxInitialRequests: 5, // 最大初始同步chunks提取数
+        minSize: 30000, // 依赖包超过30000bit将被单独打包
+        cacheGroups: {
+          // 单独拆出依赖包，因为主入口文件太大了
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "chunk-vendors",
+            minChunks: 1,
+            chunks: "initial", // initial-只拆分入口文件的模块  async-对动态加载的模块进行拆分  all-对所有类型的模块进行拆分
+            priority: -10,
+          },
+          // 单独抽取使用频次高的components组件
+          common: {
+            test: /src[\\/]components/,
+            name: "chunk-common",
+            chunks: "all",
+            minChunks: 3,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          // 依赖太大，单独打包
+          "element-ui": {
+            name: "element-ui", // 单独将 element-ui 拆包
+            priority: -5, // 权重需大于`chunk-vendors`
+            test: /[\\/]node_modules[\\/]element-ui[\\/]/,
+            chunks: "initial",
+            minSize: 100,
+            minChunks: 1,
+          },
+          // 依赖太大，单独打包
+          echarts: {
+            name: "echarts", // 单独将 echarts 拆包
+            priority: -5, // 权重需大于`chunk-vendors`
+            test: /[\\/]node_modules[\\/]echarts[\\/]/,
+            chunks: "all",
+            minSize: 100,
+            minChunks: 1,
+          },
+        },
+      },
+      runtimeChunk: {
+        // 把chunk映射关系列表从主入口文件app.js抽出来
+        name: "manifest",
+      },
+    };
+    // 直接修改配置
+    config.optimization = optimization;
+  }
+};
+```
+
+路由懒加载配置：
+
+```typescript
+const Home = () =>
+  import(/* webpackChunkName: "home" */ "@/views/home/home.vue");
 ```
 
 ## DllPlugin
