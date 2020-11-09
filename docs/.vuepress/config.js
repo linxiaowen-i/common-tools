@@ -18,7 +18,8 @@ module.exports = (options, context) => ({
       { text: '代码片段', link: '/pieces/file/' },
       { text: '播放器', link: '/player/DPlayer/' },
       { text: '常用配置', link: '/my-setting/vscode/' },
-      { text: 'webpack配置', link: '/webpack/vuecli-pack/' }
+      { text: 'webpack配置', link: '/webpack/vuecli-pack/' },
+      {text:'服务器', link: 'server/raspberry-pi'}
     ],
     sidebarDepth: 3,
     sidebar: {
@@ -43,6 +44,12 @@ module.exports = (options, context) => ({
         {
           title: 'webpack配置',
           children: ['vuecli-pack', 'pack-diff']
+        }
+      ],
+      '/server/': [
+        {
+          title: '服务器',
+          children: ['command','raspberry-pi']
         }
       ]
     }
