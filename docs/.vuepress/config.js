@@ -19,7 +19,8 @@ module.exports = (options, context) => ({
       { text: '播放器', link: '/player/DPlayer/' },
       { text: '常用配置', link: '/my-setting/vscode/' },
       { text: 'webpack配置', link: '/webpack/vuecli-pack/' },
-      {text:'服务器', link: '/server/raspberry-pi'}
+      {text: '服务器', link: '/server/raspberry-pi'},
+      {text: 'Git', link: '/git/ssh-key'}
     ],
     sidebarDepth: 2,
     sidebar: {
@@ -50,6 +51,12 @@ module.exports = (options, context) => ({
         {
           title: '服务器',
           children: ['command','raspberry-pi', 'samba']
+        }
+      ],
+      '/git/': [
+        {
+          title: '服务器',
+          children: ['ssh-key']
         }
       ]
     }
