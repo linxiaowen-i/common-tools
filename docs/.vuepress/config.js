@@ -38,13 +38,13 @@ module.exports = (options, context) => ({
       '/my-setting/': [
         {
           title: '常用配置',
-          children: ['vscode', 'npm']
+          children: ['vscode', 'npm', 'cmder']
         }
       ],
       '/webpack/': [
         {
           title: 'webpack配置',
-          children: ['vuecli-pack', 'pack-diff']
+          children: ['vuecli-pack', 'pack-diff', 'concept', 'configuration']
         }
       ],
       '/server/': [
