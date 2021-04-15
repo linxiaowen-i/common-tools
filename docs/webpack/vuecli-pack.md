@@ -1,5 +1,18 @@
 # vuecli 定制的 webpack 优化配置
 
+## 脚手架
+现在很多前端框架都提供了简单的工具来协助快速生成项目基础文件，一般都会包含项目使用的webpack配置，如：
+- create-react-app
+- angular-cli
+- vue-cli
+
+这里主要讲我们项目中最常用的vue-cli
+
+### vue-cli 构建的项目查看当前项目 webpack 配置
+
+```shell
+vue inspect > output.js
+```
 ## 量化分析
 
 因为平时项目都用 vue-cli 直接创建项目，已经对 webpack 做了深度的封装，很多都是默认配置，所以先基于 vue-cli 来看吧。
